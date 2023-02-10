@@ -2,8 +2,9 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div>
-            <h1>This is login page</h1>
+        <div className='w-full h-[80vh] flex flex-col justify-center items-center'>
+            <h1>login</h1>
+            <form action=""></form>
         </div>
     );
 };

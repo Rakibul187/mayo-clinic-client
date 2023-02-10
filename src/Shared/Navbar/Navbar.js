@@ -6,7 +6,7 @@ const Navbar = () => {
         <li><Link to="/appointment">Appointments</Link></li>
         <li><Link to="/">About</Link></li>
         <li><Link to="/">Reviews</Link></li>
-        <li><Link to="/">Login</Link></li>
+        <li><Link to="/login">Login</Link></li>
     </>
     return (
         <div className="navbar bg-base-100 flex justify-between px-20">
