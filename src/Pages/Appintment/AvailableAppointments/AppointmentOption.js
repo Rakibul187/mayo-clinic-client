@@ -15,7 +15,6 @@ const AppointmentOption = ({ appointmentOption, setTreanment }) => {
                             disabled={slots.length === 0}
                             onClick={() => setTreanment(appointmentOption)}
                             htmlFor="booking-modal"
-                            setTreanment={appointmentOption}
                             className="btn btn-primary text-white">Book Now</label
                         >
                     </div>

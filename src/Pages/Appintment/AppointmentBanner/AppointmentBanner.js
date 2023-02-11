@@ -4,7 +4,7 @@ import bgchair from "../../../assets/images/bg.png"
 const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
 
     return (
-        <banner className="hero "
+        <div className="hero "
             style={{ backgroundImage: `url(${bgchair})`, backgroundRepeat: 'no-repeat' }}
         >
             <div
@@ -18,7 +18,7 @@ const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
                     />
                 </div>
             </div>
-        </banner >
+        </div >
     );
 };
 
