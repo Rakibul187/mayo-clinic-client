@@ -1,20 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const { createUser, userUpdate } = useContext(AuthContext)
     const [signUpError, setSignError] = useState(null)
-
+    const navigate = useNavigate()
     const handleSignUp = data => {
         setSignError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user
                 console.log(user)
+                toast.success("User created successfully")
                 const userInfo = {
                     displayName: data.name
                 }
@@ -22,7 +23,7 @@ const SignUp = () => {
                 userUpdate(userInfo)
                     .then(() => {
                         reset()
-                        toast.success("User updated successfully")
+                        saveUser(data.name, data.email)
                     })
                     .then(e => console.log(e))
             })
@@ -30,6 +31,24 @@ const SignUp = () => {
                 setSignError(e.message)
 
             })
+
+        const saveUser = (name, email) => {
+            const user = {
+                name, email
+            }
+            fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    navigate("/")
+                })
+        }
     }
     return (
         <div className='w-full h-[80vh] flex flex-col justify-center items-center'>
