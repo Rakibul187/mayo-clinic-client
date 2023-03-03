@@ -6,7 +6,9 @@ const Navbar = () => {
 
     const handleSignout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem("accessToken")
+            })
             .catch(e => console.log(e))
     }
     let menuItems = <>
